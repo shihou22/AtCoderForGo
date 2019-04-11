@@ -41,7 +41,9 @@ func mainB() {
 		fmt.Scan(&kA[i])
 		aA[i] = make([]int, 0)
 		for j := 0; j < kA[i]; j++ {
-			fmt.Scan(&aA[i][j])
+			var b int
+			fmt.Scan(&b)
+			aA[i] = append(aA[i], b)
 		}
 	}
 

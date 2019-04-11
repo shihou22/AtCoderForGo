@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_solveA(t *testing.T) {
 	type args struct {
@@ -20,6 +22,31 @@ func Test_solveA(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := solveA(tt.args.a, tt.args.b); got != tt.want {
 				t.Errorf("solveA() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_solveB(t *testing.T) {
+	type args struct {
+		n  int
+		m  int
+		kA []int
+		aA [][]int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{name: "1", args: args{3, 4, []int{2, 3, 2}, [][]int{{1, 3}, {1, 2, 3}, {3, 2}}}, want: 1},
+		{name: "2", args: args{5, 5, []int{4, 4, 4, 4, 4}, [][]int{{2, 3, 4, 5}, {1, 3, 4, 5}, {1, 2, 4, 5}, {1, 2, 3, 5}, {1, 2, 3, 4}}}, want: 0},
+		{name: "3", args: args{1, 30, []int{3}, [][]int{{5, 10, 30}}}, want: 3},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := solveB(tt.args.n, tt.args.m, tt.args.kA, tt.args.aA); got != tt.want {
+				t.Errorf("solveB() = %v, want %v", got, tt.want)
 			}
 		})
 	}
