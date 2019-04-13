@@ -46,6 +46,24 @@ type StudentC struct {
 	Height int
 }
 
+/*
+sort用
+GO 1.6ではsort#Sliceが使えないのでこちらで対応
+*/
+type students []StudentC
+
+func (u students) Len() int {
+	return len(u)
+}
+
+func (u students) Less(i, j int) bool {
+	return u[i].Height > u[j].Height
+}
+
+func (u students) Swap(i, j int) {
+	u[i], u[j] = u[j], u[i]
+}
+
 func mainC() {
 	var n int
 	var wk []StudentC
@@ -75,9 +93,13 @@ func solveC(n int, wk []StudentC) []string {
 	/*
 		構造体のsliceをsortする
 	*/
-	sort.SliceStable(wk, func(i, j int) bool {
-		return wk[i].Height > wk[j].Height
-	})
+	// sort.SliceStable(wk, func(i, j int) bool {
+	// 	return wk[i].Height > wk[j].Height
+	// })
+
+	studentsList := students(wk)
+	sort.Sort(studentsList)
+
 	res := make([]string, 0)
 	for i := 0; i < len(wk); i++ {
 		/*
