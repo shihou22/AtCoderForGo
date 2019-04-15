@@ -28,7 +28,7 @@ func solveA(a int64, b int64) int64 {
 }
 
 func mainB() {
-	var n, m int
+		var n, m int
 	fmt.Scan(&n, &m)
 
 	var kA []int
@@ -41,13 +41,16 @@ func mainB() {
 		fmt.Scan(&kA[i])
 		aA[i] = make([]int, 0)
 		for j := 0; j < kA[i]; j++ {
-			fmt.Scan(&aA[i][j])
+			var b int
+			fmt.Scan(&b)
+			aA[i] = append(aA[i], b)
 		}
 	}
 
 	var res = solveB(n, m, kA, aA)
 
 	fmt.Println(res)
+
 }
 
 func solveB(n int, m int, kA []int, aA [][]int) int {
