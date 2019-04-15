@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 	"sort"
 	"strconv"
 )
@@ -36,7 +35,7 @@ func mainB() {
 }
 
 func solveB(a, b, c int64) int64 {
-	var ConstNum = int64(math.Pow(10, 9) + 7)
+	const ConstNum = 1000000007
 	return a * b % ConstNum * c % ConstNum
 }
 
